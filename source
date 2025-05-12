@@ -1,1 +1,182 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+
+local Window = Rayfield:CreateWindow({
+   Name = "Scripts that are broken in ropro",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "NVZR script",
+   LoadingSubtitle = "by Disgrance burner.1 ",
+   Theme = "Darkblue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+
+
+local Tab = Window:CreateTab("Item scripts", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Excusewood",
+   Callback = function()
+   local args = {
+        [1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+        [2] = "UpdateClassCus",
+        [3] = "Noob",
+        [4] = "Supplier",
+        [5] = "Gadget2",
+        [6] = "Excusewood"
+        }
+        game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Injector",
+   Callback = function()
+   		local args = {
+		[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+		[2] = "UpdateClassCus",
+		[3] = "Zombie",
+		[4] = "Medic",
+		[5] = "Gadget1",
+		[6] = "Injector"
+		}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Radio zombie",
+   Callback = function()
+   
+   end,
+})
+
+Name = "Contributor Mask",
+	Callback = function()
+		function getNil(name,class) for _,v in next, getnilinstances() do if v.ClassName==class and v.Name==name then return v;end end end
+		local args = {
+		[1] = getNil("HandleClass", "LocalScript"),
+		[2] = "Supplier",
+		[3] = "CharacterSlot1",
+		[4] = "Lobby Mask"
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("Miscs"):WaitForChild("Events"):WaitForChild("DeployPlayerToBattleEvent"):InvokeServer(unpack(args))
+      		print("button pressed")
+  	end,
+	  })    
+local Button = Tab:CreateButton({
+   Name = "Raigset zombies",
+   Callback = function()
+   	  local args = {
+		[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+		[2] = "UpdateClassCus",
+		[3] = "Zombie",
+		[4] = "Supplier",
+		[5] = "Grenade",
+		[6] = "Raig Grenade"
+		}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+      		print("button pressed")
+  	end,    
+})
+
+local Button = Tab:CreateButton({
+   Name = "Raigset noobs ",
+   Callback = function()
+  local args = {
+		[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+		[2] = "UpdateClassCus",
+		[3] = "Noob",
+		[4] = "Supplier",
+		[5] = "Grenade",
+		[6] = "Raig Grenade"
+		}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+      		print("button pressed")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Radio noobs",
+   Callback = function()
+local args = {
+			[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+			[2] = "UpdateClassCus",
+			[3] = "Noob",
+			[4] = "Medic",
+			[5] = "Fun Gadget",
+			[6] = "Radio"
+			}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+      		print("button pressed")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Zombieradio",
+   Callback = function()
+   local args = {
+			[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+			[2] = "UpdateClassCus",
+			[3] = "Zombie",
+			[4] = "Medic",
+			[5] = "Fun Gadget",
+			[6] = "Radio"
+			}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+      		print("button pressed")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Injector noobs",
+   Callback = function()
+local args = {
+		[1] = game:GetService("Players").LocalPlayer.PlayerGui.ClassGui.CustomizeClassFrame.HandleClassCus,
+		[2] = "UpdateClassCus",
+		[3] = "Noob",
+		[4] = "Medic",
+		[5] = "Gadget1",
+		[6] = "Injector"
+		}
+		game:GetService("ReplicatedStorage").Miscs.Events.ChangeCustomizationEvent:FireServer(unpack(args))
+      		print("button pressed")
+   end,
+})
+
+local Tab = Window:CreateTab("my fingers hurt btw  misc tab, 4483362458) -- Title, Image
+
+local Section = Tab:CreateSection("Destroy script")
+
+local Button = Tab:CreateButton({
+   Name = "Have sex with sicknoobie",
+   Callback = function()
+ OrionLib:Destroy()
+      		print("button pressed")
+   end,
+})
