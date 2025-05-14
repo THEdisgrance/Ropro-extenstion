@@ -173,55 +173,6 @@ function getNil(name,class) for _,v in next, getnilinstances() do if v.ClassName
    end,
 })
 
-local Button = Tab:CreateButton({
-   Name = "Undetected inf jump",
-   Callback = function()
- local infjump = true
-        game:GetService("UserInputService").JumpRequest:connect(function()
-        if infjump then
-        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
-        end
-        end)
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "Undetected walkspeed",
-   Callback = function()
-local Players = game:service("Players")
-        local Player = Players.LocalPlayer
-        local userInput = game:service("UserInputService")
-        local runService = game:service("RunService")
-        repeat wait() until Player.Character
-        local Character = Player.Character
-        local pHum = Character:WaitForChild("Humanoid")
-        local humRoot = Character:WaitForChild("HumanoidRootPart")
-        local Multiplier = 2 -- adjust this for more or less speed
-        userInput.InputBegan:connect(function(Key)
-        if Key.KeyCode == Enum.KeyCode.LeftBracket then
-        Multiplier = Multiplier + 0.1
-        wait(0.2)
-        while userInput:IsKeyDown(Enum.KeyCode.LeftBracket) do
-        wait()
-        Multiplier = Multiplier + 0.1
-        end
-        end
-        if Key.KeyCode == Enum.KeyCode.RightBracket then
-        Multiplier = Multiplier - 0.1
-        wait(0.2)
-        while userInput:IsKeyDown(Enum.KeyCode.RightBracket) do
-        wait()
-        Multiplier = Multiplier - 0.1
-        end
-        end
-        end)
-        runService.Stepped:connect(function()
-        if userInput:IsKeyDown(Enum.KeyCode.LeftShift) then
-        humRoot.CFrame = humRoot.CFrame + pHum.MoveDirection * Multiplier
-        end
-        end)
-   end,
-})
 
 local Button = Tab:CreateButton({
    Name = "Hitbox Expander gui",
@@ -369,6 +320,79 @@ game:GetService('RunService').RenderStepped:connect(function()
   end
  end
 end)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Remove fall damage",
+   Callback = function()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local function removeFallDamageEvent()
+    while true do
+        local fallDamageEvent = ReplicatedStorage.Miscs.Events:FindFirstChild("FallDamageEvent")
+        if fallDamageEvent then
+            fallDamageEvent:Destroy()
+            print("FallDamageEvent has been removed.")
+        end
+        wait(1) -- Check every 1 second
+    end
+end
+
+-- Run the function to remove FallDamageEvent
+removeFallDamageEvent()
+
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Undetected inf jump",
+   Callback = function()
+ local infjump = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+        if infjump then
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+        end
+        end)
+      		print("button pressed")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Undetected speed 0.5",
+   Callback = function()
+ local Players = game:service("Players")
+        local Player = Players.LocalPlayer
+        local userInput = game:service("UserInputService")
+        local runService = game:service("RunService")
+        repeat wait() until Player.Character
+        local Character = Player.Character
+        local pHum = Character:WaitForChild("Humanoid")
+        local humRoot = Character:WaitForChild("HumanoidRootPart")
+        local Multiplier = 0.5 -- adjust this for more or less speed
+        userInput.InputBegan:connect(function(Key)
+        if Key.KeyCode == Enum.KeyCode.LeftBracket then
+        Multiplier = Multiplier + 0.1
+        wait(0.2)
+        while userInput:IsKeyDown(Enum.KeyCode.LeftBracket) do
+        wait()
+        Multiplier = Multiplier + 0.1
+        end
+        end
+        if Key.KeyCode == Enum.KeyCode.RightBracket then
+        Multiplier = Multiplier - 0.1
+        wait(0.2)
+        while userInput:IsKeyDown(Enum.KeyCode.RightBracket) do
+        wait()
+        Multiplier = Multiplier - 0.1
+        end
+        end
+        end)
+        runService.Stepped:connect(function()
+        if userInput:IsKeyDown(Enum.KeyCode.LeftControl) then
+        humRoot.CFrame = humRoot.CFrame + pHum.MoveDirection * Multiplier
+        end
+        end)
    end,
 })
 
