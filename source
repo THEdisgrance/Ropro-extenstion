@@ -396,6 +396,164 @@ local Button = Tab:CreateButton({
    end,
 })
 
+local Button = Tab:CreateButton({
+   Name = "Destroy barriers and cam",
+   Callback = function()
+    -- Check for Model and Parts in Workspace and destroy them
+local function destroyIfExists(name)
+    local item = Workspace:FindFirstChild(name)
+    if item then
+        item:Destroy()
+        item.Parent = Workspace
+    end
+end
+
+-- Destroy the SpawnKillSystem model
+destroyIfExists("SpawnKillSystem")
+
+-- Destroy the NoobCam part
+destroyIfExists("NoobCam")
+
+-- Destroy the ZombieCam part
+destroyIfExists("ZombieCam")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Veterans perk",
+   Callback = function()
+while true do
+			for i,rr in pairs(game.Players:GetPlayers()) do
+			if rr.name ~= game:GetService("Players").LocalPlayer.Name then
+			local stuff = {game:GetService("Players"):FindFirstChild(rr.Name).Backpack:FindFirstChild("Activasional Menu")}
+			if stuff[0] or stuff[1] then
+			print("(DEBUG!) found something")
+			keypress(120)
+			keyrelease(120)
+			table.foreach(stuff, function(i,v)
+			v.Parent = game:GetService("Players").LocalPlayer.Backpack
+			end)
+			end
+			end
+			end
+			task.wait(5)
+			end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Coffee",
+   Callback = function()
+local args = {
+		[1] = workspace.Lobby:FindFirstChild("Takeo Grounds"):FindFirstChild("Lil' Takeo Hut"):FindFirstChild("Takeo Noob").Head.Dialog.MoreChoices.MoreChoices.Coffee
+		}
+		workspace.Lobby:FindFirstChild("Takeo Grounds"):FindFirstChild("Lil' Takeo Hut"):FindFirstChild("Takeo Noob").Head.Dialog.DialogEvent:FireServer(unpack(args))
+   end,
+})
+
+local Section = Tab:CreateSection("Random")
+
+local Button = Tab:CreateButton({
+   Name = "Insta respawn",
+   Callback = function()
+  game:GetService("ReplicatedStorage").Miscs.Events.DoneLoadingEvent:FireServer()
+   end,
+})
+
+
+local Button = Tab:CreateButton({
+   Name = "Infinite ammo",
+   Callback = function()
+NVZR_INF_AMMO_ALREADY_ON_THIS = 'NVZR_INF_AMMO_ALREADY_ON_THIS foreal lol books of books'
+
+local player = game.Players.LocalPlayer
+
+nvzr_number_key_for_inf_ammo_thing = player.Backpack.ChildAdded:Connect(function(child)
+    if child:IsA("Tool") then
+
+
+local function findEquippedTool(character)
+    for _, item in pairs(character:GetChildren()) do
+        if item:IsA("Tool") and item:FindFirstChild("Clip") then
+            return item
+        end
+    end
+    return nil
+end
+
+-- Monitor the Clip value
+local function monitorClipValue(tool)
+    local clip = tool:FindFirstChild("Clip")
+    if clip then
+        clip:GetPropertyChangedSignal("Value"):Connect(function()
+            if clip.Value == 0 then
+                clip.Value = clip.MaxValue
+            end
+        end)
+    end
+end
+
+local player = game.Players.LocalPlayer
+
+
+
+local tool = nil
+
+local startTime = tick()
+while tick() - startTime < 5 do -- give 5 seconds to load the load animation
+    local character = player.Character or player.CharacterAdded:Wait()
+    tool = findEquippedTool(character)
+    if tool then
+        break
+    end
+    wait(0.1) -- prevent freeze
+end
+
+
+if tool then
+    local umm = tool:FindFirstChild(NVZR_INF_AMMO_ALREADY_ON_THIS)
+    
+    if not umm then
+    game:GetService("StarterGui"):SetCore("SendNotification",{["Title"] = "Inf Clips",["Text"] = "The gun " .. tool.name,["Duration"] = 5})
+
+    local already_have_inf_label = Instance.new("TextLabel")
+    already_have_inf_label.Name = NVZR_INF_AMMO_ALREADY_ON_THIS
+    already_have_inf_label.Parent = tool
+
+    while true do
+        local character = player.Character or player.CharacterAdded:Wait()
+        local tool = nil
+
+        -- Loop to keep monitoring if the tool is equipped
+        while character do
+            tool = findEquippedTool(character)
+            if tool then
+                monitorClipValue(tool)
+            end
+
+            -- Wait for character reset
+            player.CharacterAdded:Wait()
+            character = player.Character
+        end
+
+        wait(0.1) -- Adjust the wait time as needed
+    end
+end
+
+end
+
+
+    end
+end)
+
+
+    -- nvzr_number_key_for_inf_ammo_thing:Disconnect()
+    -- nvzr_number_key_for_inf_ammo_thing = nil
+ 
+
+   end,
+})
+
 local Tab = Window:CreateTab("Miscs", 4483362458) -- Title, Image
 
 local Section = Tab:CreateSection("destroy script")
